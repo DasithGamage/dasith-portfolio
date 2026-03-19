@@ -3,3 +3,6 @@
 
 [build]
   command = "bun run build"
+
+[build.environment]
+  NETLIFY_VISUAL_EDITOR_ENABLED = "false"
