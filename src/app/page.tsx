@@ -256,7 +256,7 @@ function AppleEmoji({ emoji, size = "w-10 h-10" }: { emoji: string; size?: strin
   const src = `https://cdn.jsdelivr.net/npm/emoji-datasource-apple/img/apple/64/${codePoint}.png`;
   return <img src={src} alt={emoji} className={`inline-block ${size} align-middle`} />;
 }
-function DockIcon({ children, mouseX }: { children: React.ReactNode; mouseX: any }) {
+function DockIcon({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
 
   const distance = useMotionValue(Infinity);
@@ -315,7 +315,7 @@ export default function Home() {
         {/* Floating Dock */}
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
           <div className="flex items-center gap-1 px-3 py-2 bg-card border border-border rounded-full shadow-lg">
-            <DockIcon mouseX={null}>
+            <DockIcon>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <button className="w-full h-full flex items-center justify-center rounded-full hover:bg-accent transition-colors">
@@ -325,7 +325,7 @@ export default function Home() {
                 <TooltipContent>Home</TooltipContent>
               </Tooltip>
             </DockIcon>
-            <DockIcon mouseX={null}>
+            <DockIcon>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <button className="w-full h-full flex items-center justify-center rounded-full hover:bg-accent transition-colors">
@@ -336,7 +336,7 @@ export default function Home() {
               </Tooltip>
             </DockIcon>
             <Separator orientation="vertical" className="h-6 mx-1" />
-            <DockIcon mouseX={null}>
+            <DockIcon>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <a href="https://github.com/DasithGamage" target="_blank" rel="noopener noreferrer" className="w-full h-full flex items-center justify-center rounded-full hover:bg-accent transition-colors hover:text-gray-500">
@@ -346,7 +346,7 @@ export default function Home() {
                 <TooltipContent>GitHub</TooltipContent>
               </Tooltip>
             </DockIcon>
-            <DockIcon mouseX={null}>
+            <DockIcon>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <a href="https://www.linkedin.com/in/dasithgamage" target="_blank" rel="noopener noreferrer" className="w-full h-full flex items-center justify-center rounded-full hover:bg-accent transition-colors hover:text-blue-600">
@@ -356,7 +356,7 @@ export default function Home() {
                 <TooltipContent>LinkedIn</TooltipContent>
               </Tooltip>
             </DockIcon>
-            <DockIcon mouseX={null}>
+            <DockIcon>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <a href="https://www.instagram.com/dasith99/" target="_blank" rel="noopener noreferrer" className="w-full h-full flex items-center justify-center rounded-full hover:bg-accent transition-all dock-instagram">
@@ -366,7 +366,7 @@ export default function Home() {
                 <TooltipContent>Instagram</TooltipContent>
               </Tooltip>
             </DockIcon>
-            <DockIcon mouseX={null}>
+            <DockIcon>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <a href="https://www.tiktok.com/@dasithgamage" target="_blank" rel="noopener noreferrer" className="w-full h-full flex items-center justify-center rounded-full hover:bg-accent transition-all dock-tiktok">
@@ -376,7 +376,7 @@ export default function Home() {
                 <TooltipContent>TikTok</TooltipContent>
               </Tooltip>
             </DockIcon>
-            <DockIcon mouseX={null}>
+            <DockIcon>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <a href="https://x.com/GamageDasith" target="_blank" rel="noopener noreferrer" className="w-full h-full flex items-center justify-center rounded-full hover:bg-accent transition-colors hover:text-sky-500">
@@ -386,7 +386,7 @@ export default function Home() {
                 <TooltipContent>X</TooltipContent>
               </Tooltip>
             </DockIcon>
-            <DockIcon mouseX={null}>
+            <DockIcon>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <a href="https://youtube.com/@dasithgamagetv" target="_blank" rel="noopener noreferrer" className="w-full h-full flex items-center justify-center rounded-full hover:bg-accent transition-colors hover:text-red-500">
@@ -397,7 +397,7 @@ export default function Home() {
               </Tooltip>
             </DockIcon>
             <Separator orientation="vertical" className="h-6 mx-1" />
-            <DockIcon mouseX={null}>
+            <DockIcon>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <button onClick={toggleTheme} className="w-full h-full flex items-center justify-center rounded-full hover:bg-accent transition-colors">

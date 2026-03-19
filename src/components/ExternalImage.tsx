@@ -35,7 +35,6 @@ export function ExternalImage({
           className={`animate-pulse bg-muted ${className}`}
         />
       )}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={src}
         alt={alt}
