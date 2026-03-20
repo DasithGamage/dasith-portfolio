@@ -144,7 +144,7 @@ export default function NotesPage() {
                   </div>
                   <Button size="sm" className="gap-1" onClick={() => handleBuyNow(featured.title, featured.price)}>
                     <NotesIcon />
-                    Buy Now
+                    Download Now
                   </Button>
                 </div>
                 <Button variant="outline" className="w-full gap-2" asChild>
@@ -195,7 +195,7 @@ export default function NotesPage() {
                       <span className="font-bold">{material.price}</span>
                       <Button size="sm" className="gap-1 h-7 text-xs" onClick={() => handleBuyNow(material.title, material.price)}>
                         <NotesIcon />
-                        Buy Now
+                        Download Now
                       </Button>
                     </div>
                   </div>

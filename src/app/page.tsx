@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -13,6 +14,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+
 
 // Icons
 const HomeIcon = () => (
@@ -187,7 +189,7 @@ const projects = [
   {
     date: "September 18th, 2025",
     title: "Understanding Severe Crashes",
-    institution: "University of Melbourne",
+    institution: "Curtin University",
     description: "Built an interactive Tableau dashboard to analyze how weather, time, vehicle age, and intersections influence severe crash risks in Victoria.",
     icon: "https://ext.same-assets.com/758970161/1982086705.jpeg",
     links: [
@@ -198,7 +200,7 @@ const projects = [
   {
     date: "June 11th, 2025",
     title: "Investigating Social Living Arrangements with NLP",
-    institution: "University of Melbourne",
+    institution: "Curtin University",
     description: "Applied NLP techniques on MIMIC-III discharge notes to infer patient living status (alone vs. not alone). Compared TF-IDF + Logistic Regression with BERT.",
     icon: "https://ext.same-assets.com/758970161/3832017242.webp",
     links: [
@@ -208,7 +210,7 @@ const projects = [
   {
     date: "May 9th, 2025",
     title: "Automated Fact-Checking with Transformers",
-    institution: "University of Melbourne",
+    institution: "Curtin University",
     description: "Built an automated fact-checking system for climate-related claims. Combined Sentence Transformers + FAISS for retrieval with BERT for classification.",
     icon: "https://ext.same-assets.com/758970161/4200856075.jpeg",
     links: [
@@ -218,7 +220,7 @@ const projects = [
   {
     date: "Oct 20th, 2024",
     title: "Predicting Supreme Court Rulings",
-    institution: "University of Melbourne",
+    institution: "Curtin University",
     description: "Explored Decision Trees and Random Forests for predicting US Supreme Court appeal outcomes.",
     icon: "https://ext.same-assets.com/758970161/795805715.jpeg",
     links: [
@@ -318,9 +320,9 @@ export default function Home() {
             <DockIcon>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <a href="/" className="w-full h-full flex items-center justify-center rounded-full hover:bg-accent transition-colors dock-home">
+                  <Link href="/" className="w-full h-full flex items-center justify-center rounded-full hover:bg-accent transition-colors dock-home">
                     <HomeIcon />
-                  </a>
+                  </Link>
                 </TooltipTrigger>
                 <TooltipContent>Home</TooltipContent>
               </Tooltip>
@@ -328,9 +330,9 @@ export default function Home() {
             <DockIcon>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <a href="/notes" className="w-full h-full flex items-center justify-center rounded-full hover:bg-accent transition-colors dock-notes">
+                  <Link href="/notes" className="w-full h-full flex items-center justify-center rounded-full hover:bg-accent transition-colors dock-notes">
                     <NotesIcon />
-                  </a>
+                  </Link>
                 </TooltipTrigger>
                 <TooltipContent>Notes</TooltipContent>
               </Tooltip>
@@ -728,7 +730,7 @@ export default function Home() {
                       </div>
                       <Button size="sm" className="gap-1">
                         <NotesIcon />
-                        Buy Now
+                        Download Now
                       </Button>
                     </div>
                   </CardContent>
