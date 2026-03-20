@@ -154,14 +154,14 @@ const education = [
     school: "Curtin University",
     logo: "/curtin-logo.png",
     degree: "Master of Artificial Intelligence",
-    period: "Feb 2026 - Feb 2027",
+    period: "2026 - 2027",
     url: "https://www.curtin.edu.au/",
   },
   {
     school: "University of Westminster",
     logo: "/westminster-logo.png",
     degree: "BEng (Hons) Software Engineering",
-    period: "2020 - Sep 2025",
+    period: "2020 - 2025",
     url: "https://www.westminster.ac.uk/",
   },
   {
@@ -318,9 +318,9 @@ export default function Home() {
             <DockIcon>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <button className="w-full h-full flex items-center justify-center rounded-full hover:bg-accent transition-colors">
+                  <a href="/" className="w-full h-full flex items-center justify-center rounded-full hover:bg-accent transition-colors dock-home">
                     <HomeIcon />
-                  </button>
+                  </a>
                 </TooltipTrigger>
                 <TooltipContent>Home</TooltipContent>
               </Tooltip>
@@ -328,9 +328,9 @@ export default function Home() {
             <DockIcon>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <button className="w-full h-full flex items-center justify-center rounded-full hover:bg-accent transition-colors">
+                  <a href="/notes" className="w-full h-full flex items-center justify-center rounded-full hover:bg-accent transition-colors dock-notes">
                     <NotesIcon />
-                  </button>
+                  </a>
                 </TooltipTrigger>
                 <TooltipContent>Notes</TooltipContent>
               </Tooltip>
@@ -339,7 +339,7 @@ export default function Home() {
             <DockIcon>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <a href="https://github.com/DasithGamage" target="_blank" rel="noopener noreferrer" className="w-full h-full flex items-center justify-center rounded-full hover:bg-accent transition-colors hover:text-gray-500">
+                  <a href="https://github.com/DasithGamage" target="_blank" rel="noopener noreferrer" className="w-full h-full flex items-center justify-center rounded-full hover:bg-accent transition-colors dock-github">
                     <GitHubIcon />
                   </a>
                 </TooltipTrigger>
