@@ -25,7 +25,8 @@ const studyMaterials = [
     title: "Complete AI/ML Notes Bundle",
     pages: "66 pages",
     updated: "Updated Oct 2025",
-    description: "Get all 5 comprehensive study notes in one package! Save $16 when you buy the complete collection covering all essential AI/ML topics.",
+    //description: "Get all 5 comprehensive study notes in one package! Save $16 when you buy the complete collection covering all essential AI/ML topics.",
+    description: "Get all 5 comprehensive study notes in one package! This is a complete collection covering all essential AI/ML topics.",
     tags: ["Machine Learning", "NLP", "AI Planning", "Ethics in AI", "All Topics Included"],
     price: "$29",
     priceType: "One-time",
@@ -88,9 +89,10 @@ export default function NotesPage() {
   const featured = studyMaterials.find(m => m.featured);
   const rest = studyMaterials.filter(m => !m.featured);
 
-  const handleBuyNow = (title: string, price: string) => {
+ const handleBuyNow = (title: string, price: string) => {
     // TODO: Connect to Stripe payment gateway
-    alert(`Stripe payment for ${title} (${price}) coming soon!`);
+    // alert(`Stripe payment for ${title} (${price}) coming soon!`);
+    alert(`"${title}" will be available for download soon! Check back later.`);
   };
 
   return (
@@ -112,11 +114,13 @@ export default function NotesPage() {
             <h2 className="text-xl font-bold mb-4">Featured Bundle</h2>
             <Card className="overflow-hidden border-2 border-green-400">
               <div className="relative h-48 bg-muted overflow-hidden">
-                {featured.discount && (
-                  <span className="absolute top-3 right-3 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded z-10">
-                    {featured.discount}
-                  </span>
-                )}
+                {/* Discount badge - uncomment when ready to sell
+                  {featured.discount && (
+                    <span className="absolute top-3 right-3 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded z-10">
+                      {featured.discount}
+                    </span>
+                  )}
+                  */}
                 <Image
                   src={featured.image}
                   alt={featured.title}
@@ -138,10 +142,12 @@ export default function NotesPage() {
                   ))}
                 </div>
                 <div className="flex items-center justify-between mb-3">
+                  {/* Price - uncomment when ready to sell
                   <div>
                     <span className="text-2xl font-bold">{featured.price}</span>
                     <span className="text-sm text-muted-foreground ml-2">{featured.priceType}</span>
                   </div>
+                  */}
                   <Button size="sm" className="gap-1" onClick={() => handleBuyNow(featured.title, featured.price)}>
                     <NotesIcon />
                     Download Now
@@ -192,7 +198,9 @@ export default function NotesPage() {
                       )}
                     </div>
                     <div className="flex items-center justify-between">
+                      {/* Price - uncomment when ready to sell
                       <span className="font-bold">{material.price}</span>
+                      */}
                       <Button size="sm" className="gap-1 h-7 text-xs" onClick={() => handleBuyNow(material.title, material.price)}>
                         <NotesIcon />
                         Download Now

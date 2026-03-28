@@ -136,6 +136,24 @@ html {
   background-position: right center;
 }
 
+.instagram-link {
+  color: rgb(8, 9, 10);
+  font-weight: 800;
+  transition: all 0.5s ease;
+}
+.dark .instagram-link {
+  color: rgb(255, 255, 255);
+}
+
+.instagram-link:hover {
+  background: linear-gradient(90deg, #f9ce34, #ee2a7b, #6228d7);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-position: right center;
+}
+
 .project-btn {
   transition: all 0.5s ease;
   background-size: 200% auto;

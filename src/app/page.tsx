@@ -187,44 +187,33 @@ const languages = [
 
 const projects = [
   {
-    date: "September 18th, 2025",
-    title: "Understanding Severe Crashes",
+    date: "March 2026",
+    title: "Domain Adaptation for ADAS Perception in Australian Freight Environments",
     institution: "Curtin University",
-    description: "Built an interactive Tableau dashboard to analyze how weather, time, vehicle age, and intersections influence severe crash risks in Victoria.",
-    icon: "https://ext.same-assets.com/758970161/1982086705.jpeg",
+    description: "Benchmarked state-of-the-art segmentation models (SegFormer, Mask2Former, OneFormer, YOLOv8) on the SydneyScapes dataset. Quantified domain shift from Cityscapes, applied fine-tuning achieving +15.81pp mIoU improvement. Focused on harsh Australian conditions — night, dust, rural roads, and wildlife.",
+    emoji: "🇦🇺",
     links: [
-      { type: "dashboard", label: "Dashboard" },
-      { type: "interactive", label: "Interactive", url: "https://public.tableau.com/shared/3RSCYMJF2" },
+      { type: "report", label: "Report", url: "" },
     ],
   },
   {
-    date: "June 11th, 2025",
-    title: "Investigating Social Living Arrangements with NLP",
-    institution: "Curtin University",
-    description: "Applied NLP techniques on MIMIC-III discharge notes to infer patient living status (alone vs. not alone). Compared TF-IDF + Logistic Regression with BERT.",
-    icon: "https://ext.same-assets.com/758970161/3832017242.webp",
+    date: "2025",
+    title: "Enhancing Electric Vehicle Battery Health Forecasting Using Advanced ML",
+    institution: "University of Westminster",
+    description: "Built a multi-model AI pipeline to predict battery State of Health (SoH) and cycle life. Combined lab and real-world usage data with transfer learning. Applied KNN imputation, Isolation Forest, SMOTE, and SHAP for explainability using Random Forest and XGBoost.",
+    emoji: "🔋",
     links: [
-      { type: "report", label: "Report" },
+      { type: "report", label: "Report", url: "" },
     ],
   },
   {
-    date: "May 9th, 2025",
-    title: "Automated Fact-Checking with Transformers",
-    institution: "Curtin University",
-    description: "Built an automated fact-checking system for climate-related claims. Combined Sentence Transformers + FAISS for retrieval with BERT for classification.",
-    icon: "https://ext.same-assets.com/758970161/4200856075.jpeg",
+    date: "2025",
+    title: "AI-Based Fruit Detection and Assistance System for Visually Impaired",
+    institution: "University of Westminster",
+    description: "Designed a real-time fruit detection system to assist visually impaired individuals during everyday tasks like shopping. Used YOLO-based object detection with OpenCV, converting detection results into audio feedback for accessibility.",
+    emoji: "🍓",
     links: [
-      { type: "report", label: "Report" },
-    ],
-  },
-  {
-    date: "Oct 20th, 2024",
-    title: "Predicting Supreme Court Rulings",
-    institution: "Curtin University",
-    description: "Explored Decision Trees and Random Forests for predicting US Supreme Court appeal outcomes.",
-    icon: "https://ext.same-assets.com/758970161/795805715.jpeg",
-    links: [
-      { type: "report", label: "Report" },
+      { type: "report", label: "Report", url: "" },
     ],
   },
 ];
@@ -234,7 +223,8 @@ const studyMaterials = [
     title: "Complete AI/ML Notes Bundle",
     pages: "66 pages",
     updated: "Updated Oct 2025",
-    description: "Get all 5 comprehensive study notes in one package! Save $16 when you buy the complete collection covering all essential AI/ML topics.",
+    //description: "Get all 5 comprehensive study notes in one package! Save $16 when you buy the complete collection covering all essential AI/ML topics.",
+        description: "Get all 5 comprehensive study notes in one package! This is a complete collection covering all essential AI/ML topics.",
     tags: ["Machine Learning", "NLP", "AI Planning", "Ethics in AI", "All Topics Included"],
     price: "$29",
     priceType: "One-time",
@@ -421,11 +411,15 @@ export default function Home() {
                   Hi, I'm Dasith <AppleEmoji emoji="🙌" size="w-14 h-14" />
                 </h1>
                 <p className="text-lg text-foreground leading-relaxed font-medium">
-                  AI & Machine Learning Enthusiast. Software Engineer at IFS. Graduate Student at the Curtin University. I do{" "}
+                  AI & Machine Learning Enthusiast. Software Engineer at IFS & Master's Student at Curtin University. I create content on{" "}
+                  <a href="https://www.instagram.com/dasith99/" target="_blank" rel="noopener noreferrer" className="instagram-link">
+                    Instagram
+                  </a>{" "}
+                  &{" "}
                   <a href="https://www.tiktok.com/@dasithgamage" target="_blank" rel="noopener noreferrer" className="font-semibold tiktok-link">
                     TikTok
                   </a>{" "}
-                  content about my student journey!
+                  about my tech journey and life!
                 </p>
                 <a href="/notes" className="inline-flex items-center gap-1 mt-4 text-foreground hover:underline transition-all duration-300 ease-in-out hover:gap-3 hover:translate-x-1 font-semibold">
                   → Tap for my study materials
@@ -624,15 +618,8 @@ export default function Home() {
               <div className="space-y-4">
                 {projects.map((project, index) => (
                   <div key={index} className="relative flex gap-6 pl-0 pb-4">
-                    <div className="relative z-10 w-16 h-16 rounded-xl overflow-hidden flex-shrink-0 bg-muted">
-                      <Image
-                        src={project.icon}
-                        alt={project.title}
-                        width={64}
-                        height={64}
-                        className="w-full h-full object-cover"
-                        unoptimized
-                      />
+                    <div className="relative z-10 w-16 h-16 rounded-xl flex-shrink-0 bg-muted flex items-center justify-center">
+                      <AppleEmoji emoji={project.emoji} size="w-10 h-10" />
                     </div>
                     <div className="flex-1 pb-4 border-b border-border">
                       <p className="text-sm text-muted-foreground mb-1">{project.date}</p>
@@ -689,11 +676,13 @@ export default function Home() {
               {studyMaterials.map((material, index) => (
                 <Card key={index} className="overflow-hidden group hover:shadow-lg transition-shadow">
                   <div className="relative h-40 bg-muted overflow-hidden">
+                    {/* Discount badge - uncomment when ready to sell
                     {material.discount && (
                       <span className="absolute top-3 right-3 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded z-10">
                         {material.discount}
                       </span>
                     )}
+                    */}
                     <Image
                       src={material.image}
                       alt={material.title}
@@ -724,10 +713,12 @@ export default function Home() {
                       )}
                     </div>
                     <div className="flex items-center justify-between">
+                      {/* Price - uncomment when ready to sell
                       <div>
                         <span className="text-xl font-bold">{material.price}</span>
                         <span className="text-sm text-muted-foreground ml-2">{material.priceType}</span>
                       </div>
+                      */}
                       <Button size="sm" className="gap-1">
                         <NotesIcon />
                         Download Now
@@ -751,11 +742,15 @@ export default function Home() {
             </Badge>
             <h2 className="text-5xl font-bold mb-6">Get in Touch</h2>
             <p className="text-foreground/70 mb-3 text-base">
-              Want to chat? Just shoot me a dm{" "}
-              <a href="https://www.tiktok.com/@dasithgamage" target="_blank" rel="noopener noreferrer" className="text-blue-500 font-semibold hover:underline">
-                with a direct question on TikTok
+              Reach out on{" "}
+              <a href="https://www.tiktok.com/@dasithgamage" target="_blank" rel="noopener noreferrer" className="font-semibold tiktok-link">
+                TikTok
+              </a>{" "}
+              or{" "}
+              <a href="https://www.instagram.com/dasith99/" target="_blank" rel="noopener noreferrer" className="font-semibold instagram-link">
+                Instagram
               </a>
-              , I like to respond to whoever has the same interests
+              , I'd love to connect!
             </p>
             <p className="text-foreground/70 text-base">
               For work inquiries, reach me directly at{" "}
