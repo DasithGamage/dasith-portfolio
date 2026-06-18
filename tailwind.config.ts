@@ -43,6 +43,13 @@ export default {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
+        pitch: {
+          '950': '#0a0e0f',
+          '900': '#0f1416',
+          '800': '#161d1f',
+          '700': '#1e2a2d',
+        },
+        'accent-500': '#22c55e',
         chart: {
           '1': 'hsl(var(--chart-1))',
           '2': 'hsl(var(--chart-2))',
