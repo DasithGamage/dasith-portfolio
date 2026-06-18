@@ -317,6 +317,12 @@ export default function Home() {
   const [isDark, setIsDark] = useState(false);
   const [showAllProjects, setShowAllProjects] = useState(false);
   const [showBanner, setShowBanner] = useState(true);
+  const [comingSoonToast, setComingSoonToast] = useState(false);
+
+  const showComingSoon = () => {
+    setComingSoonToast(true);
+    setTimeout(() => setComingSoonToast(false), 2800);
+  };
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
@@ -700,7 +706,7 @@ export default function Home() {
                                 <span className="ml-1">{link.label}</span>
                               </a>
                             ) : (
-                              <span className="inline-flex items-center gap-1 opacity-40 cursor-not-allowed">
+                              <span onClick={(e) => { e.stopPropagation(); showComingSoon(); }} className="inline-flex items-center gap-1 cursor-pointer">
                                 {link.type === "dashboard" && <ChartIcon />}
                                 {link.type === "interactive" && <GlobeIcon />}
                                 {link.type === "report" && <FileTextIcon />}
@@ -831,6 +837,14 @@ export default function Home() {
         </div>
       </main>
 
+      {/* Coming soon toast */}
+      {comingSoonToast && (
+        <div className="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-xl shadow-lg text-sm font-medium text-white flex items-center gap-2 animate-in fade-in slide-in-from-bottom-2"
+          style={{ background: "rgba(30,30,30,0.95)", border: "1px solid rgba(255,255,255,0.12)" }}
+        >
+          <span>🔒</span> This report will be available soon
+        </div>
+      )}
     </TooltipProvider>
   );
 }
