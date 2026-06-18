@@ -9,6 +9,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
@@ -103,6 +109,14 @@ const FileTextIcon = () => (
   </svg>
 );
 
+const DownloadIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+    <polyline points="7 10 12 15 17 10" />
+    <line x1="12" y1="15" x2="12" y2="3" />
+  </svg>
+);
+
 const ChartIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <line x1="18" y1="20" x2="18" y2="10" />
@@ -187,13 +201,33 @@ const languages = [
 
 const projects = [
   {
+    date: "Jun 2026",
+    title: "FIFA World Cup 2026 — ML Match Predictor",
+    institution: "Personal Project · XGBoost · FastAPI · React",
+    description: "A real-time AI-powered match prediction system for FIFA World Cup 2026. Trains per-match XGBoost models on historical Elo-rated international football data, fetches live scores from ESPN, and flips cards to reveal actual results vs ML predictions. Built with FastAPI, React, and a fully automated refresh pipeline.",
+    emoji: "⚽",
+    links: [
+      { type: "interactive", label: "Try the Tool", url: "/wc2026" },
+    ],
+  },
+  {
+    date: "May 2026",
+    title: "Suicide Risk Detection System for Conversational Clinical Data",
+    institution: "Curtin University · Master of Artificial Intelligence",
+    description: "Can LLMs reliably detect suicide risk from clinical conversations? I compared four approaches — zero-shot MentalBERT, GPT-4o-mini, Chain-of-Thought prompting, and a custom hybrid — against a five-class risk scale used in real clinical settings. The hybrid model hit 70.3% accuracy on 808 held-out cases and surfaced its reasoning through a clinician-facing dashboard.",
+    emoji: "🧠",
+    links: [
+      { type: "report", label: "View Report", url: "" },
+    ],
+  },
+  {
     date: "March 2026",
-    title: "Domain Adaptation for ADAS Perception in Australian Freight Environments",
-    institution: "Curtin University",
-    description: "Benchmarked state-of-the-art segmentation models (SegFormer, Mask2Former, OneFormer, YOLOv8) on the SydneyScapes dataset. Quantified domain shift from Cityscapes, applied fine-tuning achieving +15.81pp mIoU improvement. Focused on harsh Australian conditions — night, dust, rural roads, and wildlife.",
+    title: "Advanced Driver Assistance System Perception for Australian Freight Trucks",
+    institution: "Curtin University · Master of Artificial Intelligence",
+    description: "European-trained perception models don't handle Australian roads well — I wanted to measure exactly how badly. Tested SegFormer, Mask2Former, OneFormer, and YOLOv8 on local driving data and found accuracy drops of up to 53.8pp. Fine-tuning on just 604 Australian images recovered +15.8pp, which is a surprisingly practical result for real-world ADAS adaptation.",
     emoji: "🇦🇺",
     links: [
-      { type: "report", label: "Report", url: "" },
+      { type: "report", label: "View Report", url: "" },
     ],
   },
   {
@@ -281,6 +315,8 @@ function DockIcon({ children }: { children: React.ReactNode }) {
 
 export default function Home() {
   const [isDark, setIsDark] = useState(false);
+  const [showAllProjects, setShowAllProjects] = useState(false);
+  const [showBanner, setShowBanner] = useState(true);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
@@ -304,6 +340,27 @@ export default function Home() {
   return (
     <TooltipProvider>
       <main className="min-h-screen bg-background">
+
+        {/* FIFA WC 2026 notification banner */}
+        {showBanner && (
+          <div className="fixed top-0 left-0 right-0 z-50 flex items-center justify-center gap-3 px-4 py-2.5 text-sm font-medium text-white"
+            style={{ background: "linear-gradient(90deg, #b91c1c 0%, #dc2626 50%, #b91c1c 100%)" }}
+          >
+            <span>⚽</span>
+            <span>FIFA World Cup 2026 AI Predictor is live!</span>
+            <Link href="/wc2026" className="underline underline-offset-2 font-bold hover:opacity-80 transition-opacity">
+              Try it →
+            </Link>
+            <button
+              onClick={() => setShowBanner(false)}
+              className="absolute right-4 text-white/70 hover:text-white transition-colors text-lg leading-none"
+              aria-label="Dismiss"
+            >
+              ×
+            </button>
+          </div>
+        )}
+
         {/* Floating Dock */}
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
           <div className="flex items-center gap-1 px-3 py-2 bg-card border border-border rounded-full shadow-lg">
@@ -402,7 +459,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mx-auto px-6 py-24 pb-32" style={{ maxWidth: '672px' }}>
+        <div className="mx-auto px-6 pb-32" style={{ maxWidth: '672px', paddingTop: showBanner ? '7rem' : '6rem' }}>
           {/* Hero Section */}
           <section className="mb-12">
             <div className="flex items-start justify-between gap-2">
@@ -616,7 +673,7 @@ export default function Home() {
             <div className="relative">
               <div className="absolute left-8 top-0 bottom-0 w-px bg-border/50" />
               <div className="space-y-4">
-                {projects.map((project, index) => (
+                {(showAllProjects ? projects : projects.slice(0, 3)).map((project, index) => (
                   <div key={index} className="relative flex gap-6 pl-0 pb-4">
                     <div className="relative z-10 w-16 h-16 rounded-xl flex-shrink-0 bg-muted flex items-center justify-center">
                       <AppleEmoji emoji={project.emoji} size="w-10 h-10" />
@@ -626,7 +683,7 @@ export default function Home() {
                       <h3 className="text-lg font-semibold mb-1">{project.title}</h3>
                       <p className="text-sm text-muted-foreground mb-2">{project.institution}</p>
                       <p className="text-muted-foreground text-sm mb-3">{project.description}</p>
-                      <div className="flex gap-2">
+                      <div className="flex gap-2 flex-wrap">
                         {project.links.map((link, linkIndex) => (
                           <Button
                             key={linkIndex}
@@ -643,12 +700,12 @@ export default function Home() {
                                 <span className="ml-1">{link.label}</span>
                               </a>
                             ) : (
-                              <>
+                              <span className="inline-flex items-center gap-1 opacity-40 cursor-not-allowed">
                                 {link.type === "dashboard" && <ChartIcon />}
                                 {link.type === "interactive" && <GlobeIcon />}
                                 {link.type === "report" && <FileTextIcon />}
                                 <span className="ml-1">{link.label}</span>
-                              </>
+                              </span>
                             )}
                           </Button>
                         ))}
@@ -657,6 +714,18 @@ export default function Home() {
                   </div>
                 ))}
               </div>
+              {projects.length > 3 && (
+                <div className="mt-6 text-center">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setShowAllProjects(!showAllProjects)}
+                    className="text-xs"
+                  >
+                    {showAllProjects ? `Show less` : `Show ${projects.length - 3} more project${projects.length - 3 !== 1 ? "s" : ""}`}
+                  </Button>
+                </div>
+              )}
             </div>
           </section>
 
@@ -761,6 +830,7 @@ export default function Home() {
           </section>
         </div>
       </main>
+
     </TooltipProvider>
   );
 }
